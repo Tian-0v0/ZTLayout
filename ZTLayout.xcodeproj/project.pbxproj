@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC0C6FF5269D81C200B8BC40 /* ZTAwakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C6FF4269D81C200B8BC40 /* ZTAwakeManager.swift */; };
 		BC411C79269047DE006DD213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C78269047DE006DD213 /* AppDelegate.swift */; };
 		BC411C7B269047DE006DD213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C7A269047DE006DD213 /* SceneDelegate.swift */; };
 		BC411C7D269047DE006DD213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C7C269047DE006DD213 /* ViewController.swift */; };
@@ -15,14 +16,13 @@
 		BC411C85269047E1006DD213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC411C83269047E1006DD213 /* LaunchScreen.storyboard */; };
 		BC411C8D269047F1006DD213 /* ZTLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C8C269047F1006DD213 /* ZTLayout.swift */; };
 		BC411C902690482B006DD213 /* ZTOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C8F2690482B006DD213 /* ZTOperators.swift */; };
-		BC411C9226905281006DD213 /* ZTAwakeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C9126905281006DD213 /* ZTAwakeProtocol.swift */; };
 		BC411C9426905291006DD213 /* UIView+ZT.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C9326905291006DD213 /* UIView+ZT.swift */; };
-		BC411C9626905331006DD213 /* ZTTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C9526905331006DD213 /* ZTTemplate.swift */; };
 		FE6ACBD67FA82D7549128CCB /* Pods_ZTLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5663A71412F395F20C618FBF /* Pods_ZTLayout.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5663A71412F395F20C618FBF /* Pods_ZTLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZTLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC0C6FF4269D81C200B8BC40 /* ZTAwakeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTAwakeManager.swift; sourceTree = "<group>"; };
 		BC411C75269047DE006DD213 /* ZTLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZTLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC411C78269047DE006DD213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC411C7A269047DE006DD213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,9 +33,7 @@
 		BC411C86269047E1006DD213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC411C8C269047F1006DD213 /* ZTLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTLayout.swift; sourceTree = "<group>"; };
 		BC411C8F2690482B006DD213 /* ZTOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTOperators.swift; sourceTree = "<group>"; };
-		BC411C9126905281006DD213 /* ZTAwakeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTAwakeProtocol.swift; sourceTree = "<group>"; };
 		BC411C9326905291006DD213 /* UIView+ZT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ZT.swift"; sourceTree = "<group>"; };
-		BC411C9526905331006DD213 /* ZTTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTTemplate.swift; sourceTree = "<group>"; };
 		BE079B551E4CE53C002E1EA5 /* Pods-ZTLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTLayout.release.xcconfig"; path = "Target Support Files/Pods-ZTLayout/Pods-ZTLayout.release.xcconfig"; sourceTree = "<group>"; };
 		D0B711D0027FFF5DCBA4AB80 /* Pods-ZTLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTLayout.debug.xcconfig"; path = "Target Support Files/Pods-ZTLayout/Pods-ZTLayout.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +96,7 @@
 				BC411C81269047E1006DD213 /* Assets.xcassets */,
 				BC411C83269047E1006DD213 /* LaunchScreen.storyboard */,
 				BC411C86269047E1006DD213 /* Info.plist */,
+				BC0C6FF4269D81C200B8BC40 /* ZTAwakeManager.swift */,
 			);
 			path = ZTLayout;
 			sourceTree = "<group>";
@@ -107,9 +106,7 @@
 			children = (
 				BC411C8C269047F1006DD213 /* ZTLayout.swift */,
 				BC411C8F2690482B006DD213 /* ZTOperators.swift */,
-				BC411C9126905281006DD213 /* ZTAwakeProtocol.swift */,
 				BC411C9326905291006DD213 /* UIView+ZT.swift */,
-				BC411C9526905331006DD213 /* ZTTemplate.swift */,
 			);
 			path = ZTLayout;
 			sourceTree = "<group>";
@@ -229,12 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC411C902690482B006DD213 /* ZTOperators.swift in Sources */,
-				BC411C9226905281006DD213 /* ZTAwakeProtocol.swift in Sources */,
 				BC411C7D269047DE006DD213 /* ViewController.swift in Sources */,
 				BC411C9426905291006DD213 /* UIView+ZT.swift in Sources */,
 				BC411C8D269047F1006DD213 /* ZTLayout.swift in Sources */,
-				BC411C9626905331006DD213 /* ZTTemplate.swift in Sources */,
 				BC411C79269047DE006DD213 /* AppDelegate.swift in Sources */,
+				BC0C6FF5269D81C200B8BC40 /* ZTAwakeManager.swift in Sources */,
 				BC411C7B269047DE006DD213 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

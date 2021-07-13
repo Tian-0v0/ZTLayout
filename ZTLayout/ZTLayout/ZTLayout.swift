@@ -7,8 +7,9 @@
 
 import UIKit
 import SnapKit
+import ZTProject
 
-enum ZTHVAlignment {
+public enum ZTHVAlignment {
     case h_top
     case h_center
     case h_bottom
@@ -24,18 +25,19 @@ enum ZTHVAlignment {
     case v_last_right
 }
 
-class ZTLayout {
-    var subViews: [UIView] = []
-    var superView: UIView
-    var contentItem: ZTItem!
-    var contentView: UIView {self.contentItem.itemView}
-    init(_ superView: UIView) {
+public class ZTLayout {
+    public var subViews: [UIView] = []
+    public var boxViews: [ZTItem] = []
+    public var superView: UIView
+    public var contentItem: ZTItem!
+    public var contentView: UIView {self.contentItem.itemView}
+    public init(_ superView: UIView) {
         self.superView = superView
     }
 }
 
-extension ZTLayout {
-    func setView(_ data: [Any]) {
+public extension ZTLayout {
+    func setView(_ data: [Any?]) {
         for i in 0..<self.subViews.count {
             guard let view = self.subViews[i] as? ZTUITemplate else { return }
             if data.count > i {
@@ -51,37 +53,40 @@ extension ZTLayout {
         item.layout = self
         self.contentItem = item
         if superView != contentView {
+            item.superView = superView
             superView.addSubview(contentView)
         }
     }
 }
 
 // MARK: -
-class ZTItem {
-    typealias Setting = (ZTItem) -> Void
-    weak var layout: ZTLayout!
+public class ZTItem {
+    public typealias Setting = (ZTItem) -> Void
+    public weak var layout: ZTLayout!
     
-    var superView: UIView!
-    var itemView: UIView
+    public var superView: UIView!
+    public var itemView: UIView
     
-    var lastItem: ZTItem?
+    public var lastItem: ZTItem?
     weak var nextItem: ZTItem?
     
-    var superItem: ZTItem?
-    var subItems: [ZTItem] = []
+    public weak var superItem: ZTItem?
+    public var subItems: [ZTItem] = []
     
-    var subAlignment: ZTHVAlignment = .h_center
-    var subspacing: CGFloat = 0
+    public var subAlignment: ZTHVAlignment = .h_center
+    public var subspacing: CGFloat = 0
+    public var contentInset: UIEdgeInsets = .zero
     
-    var alignment: ZTHVAlignment?
-    var spacing: CGFloat?
+    public var alignment: ZTHVAlignment?
+    public var spacing: CGFloat?
     
-    var sizeToFit: Bool = true
-    var insertItem: Bool = false
+    public var sizeToFit: Bool = true
+    public var insertItem: Bool = false
+    public var isBox: Bool = false
     
     //var autoNewLine: Bool = false
     
-    init(_ itemView: UIView = UIView(), setting: Setting? = nil) {
+    public init(_ itemView: UIView = UIView(), setting: Setting? = nil) {
         self.itemView = itemView
         guard let setting = setting else { return }
         setting(self)
@@ -90,17 +95,26 @@ class ZTItem {
 
 extension ZTItem {
     func append(_ item: ZTItem) {
-        item.alignment = item.alignment ?? superItem?.subAlignment ?? layout.contentItem.alignment
-        item.spacing = item.spacing ?? superItem?.subspacing ?? layout.contentItem.spacing
+        if item.insertItem {
+            item.superView = self.itemView
+            item.superItem = self
+            self.subItems.append(item)
+        }else {
+            item.superView = self.superView
+            item.superItem = self.superItem
+            item.lastItem = self
+        }
         
-        item.superView = self.superView
-        item.superItem = self.superItem
+        item.alignment = item.alignment ?? item.superItem?.subAlignment
+        item.spacing = item.spacing ?? item.superItem?.subspacing
         item.layout = self.layout
-        item.lastItem = self
         
         self.nextItem = item
-        self.layout?.subViews.append(item.itemView)
+        if let _ = item.itemView as? ZTUITemplate, !item.isBox {
+            self.layout?.subViews.append(item.itemView)
+        }
         
+        self.layout?.boxViews.append(item)
         item.superView.addSubview(item.itemView)
         item.ly()
     }
@@ -114,6 +128,10 @@ extension ZTItem {
         item.superItem = self
         
         self.subItems.append(item)
+        if let _ = item.itemView as? ZTUITemplate, !item.isBox {
+            self.layout?.subViews.append(item.itemView)
+        }
+        self.layout?.boxViews.append(item)
         
         item.superView.addSubview(item.itemView)
         item.ly()
