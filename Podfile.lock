@@ -1,16 +1,48 @@
 PODS:
+  - Differentiator (5.0.0)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
   - SnapKit (5.0.1)
+  - ZTProject (0.0.1):
+    - RxCocoa
+    - RxDataSources
+    - RxSwift
+    - SnapKit
 
 DEPENDENCIES:
   - SnapKit
+  - ZTProject (from `/Users/t_t/Tian-0v0/ZTProject`)
 
 SPEC REPOS:
   trunk:
+    - Differentiator
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
     - SnapKit
 
-SPEC CHECKSUMS:
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+EXTERNAL SOURCES:
+  ZTProject:
+    :path: "/Users/t_t/Tian-0v0/ZTProject"
 
-PODFILE CHECKSUM: a7523a3380382888b841f038ebf16e6c996e8b7a
+SPEC CHECKSUMS:
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  ZTProject: 04f5ba3af595cc70ded64c21f9b246d0ac98dbd2
+
+PODFILE CHECKSUM: 4360070193b308213dd093804b2c0e1985ef9937
 
 COCOAPODS: 1.10.1

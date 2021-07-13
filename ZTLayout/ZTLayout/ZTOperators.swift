@@ -14,22 +14,24 @@ precedencegroup FormPrecedence {
 
 infix operator +++ : FormPrecedence
 
-func +++ (left: ZTLayout, right: ZTItem) -> ZTItem {
-    left.append(right)
+public func +++ (left: ZTLayout, right: ZTItem) -> ZTItem {
     right.insertItem = true
+    right.isBox = true
+    left.append(right)
     return right
 }
 
-func +++ (left: ZTItem, right: ZTItem) -> ZTItem {
-    left.append(right)
+public func +++ (left: ZTItem, right: ZTItem) -> ZTItem {
     right.insertItem = true
+    right.isBox = true
+    left.append(right)
     return right
 }
 
 infix operator >>> : FormPrecedence
 
 @discardableResult
-func >>> (left: ZTItem, right: ZTItem) -> ZTItem {
+public func >>> (left: ZTItem, right: ZTItem) -> ZTItem {
     if left.insertItem {
         left.insert(right)
     }else {
@@ -40,7 +42,7 @@ func >>> (left: ZTItem, right: ZTItem) -> ZTItem {
 
 infix operator --- : FormPrecedence
 
-func --- (left: ZTItem, right: Int = 1) -> ZTItem {
+public func --- (left: ZTItem, right: Int = 1) -> ZTItem {
     var count = 0
     var item = left
     while count < right {
