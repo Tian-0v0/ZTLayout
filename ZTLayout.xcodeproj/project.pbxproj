@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BC0C6FF5269D81C200B8BC40 /* ZTAwakeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C6FF4269D81C200B8BC40 /* ZTAwakeManager.swift */; };
+		BC0C6FF8269D83A400B8BC40 /* ZTItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C6FF7269D83A400B8BC40 /* ZTItem.swift */; };
+		BC0C6FFB269E880800B8BC40 /* ZTLayoutDemoViewController01.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C6FFA269E880800B8BC40 /* ZTLayoutDemoViewController01.swift */; };
 		BC411C79269047DE006DD213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C78269047DE006DD213 /* AppDelegate.swift */; };
 		BC411C7B269047DE006DD213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C7A269047DE006DD213 /* SceneDelegate.swift */; };
 		BC411C7D269047DE006DD213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC411C7C269047DE006DD213 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		5663A71412F395F20C618FBF /* Pods_ZTLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZTLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC0C6FF4269D81C200B8BC40 /* ZTAwakeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTAwakeManager.swift; sourceTree = "<group>"; };
+		BC0C6FF7269D83A400B8BC40 /* ZTItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTItem.swift; sourceTree = "<group>"; };
+		BC0C6FFA269E880800B8BC40 /* ZTLayoutDemoViewController01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTLayoutDemoViewController01.swift; sourceTree = "<group>"; };
 		BC411C75269047DE006DD213 /* ZTLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZTLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC411C78269047DE006DD213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC411C7A269047DE006DD213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC0C6FF6269D838B00B8BC40 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C6FF7269D83A400B8BC40 /* ZTItem.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		BC0C6FF9269E87F300B8BC40 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BC0C6FFA269E880800B8BC40 /* ZTLayoutDemoViewController01.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		BC411C6C269047DE006DD213 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +108,8 @@
 		BC411C77269047DE006DD213 /* ZTLayout */ = {
 			isa = PBXGroup;
 			children = (
+				BC0C6FF9269E87F300B8BC40 /* Demo */,
+				BC0C6FF6269D838B00B8BC40 /* Layout */,
 				BC411C8E269047F7006DD213 /* ZTLayout */,
 				BC411C78269047DE006DD213 /* AppDelegate.swift */,
 				BC411C7A269047DE006DD213 /* SceneDelegate.swift */,
@@ -228,7 +250,9 @@
 				BC411C902690482B006DD213 /* ZTOperators.swift in Sources */,
 				BC411C7D269047DE006DD213 /* ViewController.swift in Sources */,
 				BC411C9426905291006DD213 /* UIView+ZT.swift in Sources */,
+				BC0C6FFB269E880800B8BC40 /* ZTLayoutDemoViewController01.swift in Sources */,
 				BC411C8D269047F1006DD213 /* ZTLayout.swift in Sources */,
+				BC0C6FF8269D83A400B8BC40 /* ZTItem.swift in Sources */,
 				BC411C79269047DE006DD213 /* AppDelegate.swift in Sources */,
 				BC0C6FF5269D81C200B8BC40 /* ZTAwakeManager.swift in Sources */,
 				BC411C7B269047DE006DD213 /* SceneDelegate.swift in Sources */,
