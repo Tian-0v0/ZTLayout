@@ -1,6 +1,6 @@
-# Xcode
 .DS_Store
 build/
+DerivedData/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,14 +9,13 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-#*.xcworkspace
-#!default.xcworkspace
-xcuserdata
-profile
+xcuserdata/
 *.moved-aside
-DerivedData
-.idea/
 *.xcuserstate
-#
-# Pods - for those of you who use CocoaPods
-#Pods
+*.xccheckout
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+Pods/
+.idea/
