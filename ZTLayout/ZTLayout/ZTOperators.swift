@@ -53,3 +53,11 @@ public func --- (left: ZTItem, right: Int = 1) -> ZTItem {
     item.insertItem = false
     return item
 }
+
+
+// MARK: -
+@discardableResult
+public func >>> (left: LYItem, right: LYItem) -> LYItem {
+    left.subItem.append(right)
+    return left
+}

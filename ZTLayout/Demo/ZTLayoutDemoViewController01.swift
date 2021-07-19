@@ -78,7 +78,7 @@ func TextField(_ value: Int) -> UITextField {
 }
 
 class ZTLayoutSetConfigBaseView: UIView {
-    var config: LyItemConfig
+    var config: LYItemConfig
     var alignment: ZTHVAlignment?
     var value: CGFloat?
     var values: [CGFloat]?
@@ -88,7 +88,7 @@ class ZTLayoutSetConfigBaseView: UIView {
     
     var updateAction = PublishRelay<Void?>()
     
-    init(superview: UIView, config: LyItemConfig, title: String? = nil, alignment: ZTHVAlignment? = nil, value: CGFloat? = nil, values: [CGFloat]? = nil, counts: [Int]? = nil) {
+    init(superview: UIView, config: LYItemConfig, title: String? = nil, alignment: ZTHVAlignment? = nil, value: CGFloat? = nil, values: [CGFloat]? = nil, counts: [Int]? = nil) {
         self.config = config
         self.alignment = alignment
         self.value = value
@@ -121,21 +121,21 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
     lazy var groupCountViewArr = [UITextField]()
     lazy var groupSpacingViewArr = [UITextField]()
     
-    var groupCountBgItem: LyItem!
-    var groupSpacingBgItem: LyItem!
+    var groupCountBgItem: LYItem!
+    var groupSpacingBgItem: LYItem!
     
     // 追加？
     override func layoutUI() {
-        let config01 = LyItemConfig()
+        let config01 = LYItemConfig()
         config01.subAlignment = .v_left
         config01.subSpacing = 5
         config01.subExtendSuper = true
         
-        let config02 = LyItemConfig()
+        let config02 = LYItemConfig()
         config02.subAlignment = .h_center
         config02.subSpacing = 5
         
-        let config03 = LyItemConfig()
+        let config03 = LYItemConfig()
         config03.subAlignment = .h_center
         config03.subSpacing = 5
         config03.subExtendSuper = true
@@ -143,20 +143,20 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
         groupCountBgItem = .init(view: UIView(), config: config03)
         groupSpacingBgItem = .init(view: UIView(), config: config03)
         
-        LyItem(view: self, superView: self.zt_superview, config: config01) {[weak self] ly in
-            ly._subItem.append(LyItem(view: Label("多行设置")))
-            ly._subItem.append(LyItem(view: UIView(), config: config02) { ly in
-                ly._subItem.append(LyItem(view: Label("添加组")))
-                ly._subItem.append(LyItem(view: self!.add))
+        LYItem(view: self, superView: self.zt_superview, config: config01) {[weak self] ly in
+            ly._subItem.append(LYItem(view: Label("多行设置")))
+            ly._subItem.append(LYItem(view: UIView(), config: config02) { ly in
+                ly._subItem.append(LYItem(view: Label("添加组")))
+                ly._subItem.append(LYItem(view: self!.add))
                 ly._subItem.append(LYBorderItem(view: self!.remove))
             })
-            ly._subItem.append(LyItem(view: UIView(), config: config02) { ly in
-                ly._subItem.append(LyItem(view: Label("组间距")))
+            ly._subItem.append(LYItem(view: UIView(), config: config02) { ly in
+                ly._subItem.append(LYItem(view: Label("组间距")))
                 ly._subItem.append(LYBorderItem(view: self!.groupSpacingView))
             })
-            ly._subItem.append(LyItem(view: Label("每行显示个数")))
+            ly._subItem.append(LYItem(view: Label("每行显示个数")))
             ly._subItem.append(self!.groupCountBgItem)
-            ly._subItem.append(LyItem(view: Label("子视图间距")))
+            ly._subItem.append(LYItem(view: Label("子视图间距")))
             ly._subItem.append(self!.groupSpacingBgItem)
         }.layout()
     }
@@ -165,17 +165,17 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
         add.rx.tap.bind{[weak self] _ in
             self?.addGroup()
             self?.updateAction.accept(nil)
-        }.disposed(by: zt_disposeBag)
+        }.disposed(by: ty_disposeBag)
             
         remove.rx.tap.bind{[weak self] _ in
             self?.removeGroup()
             self?.updateAction.accept(nil)
-        }.disposed(by: zt_disposeBag)
+        }.disposed(by: ty_disposeBag)
         
         groupSpacingView.rx.text.map{$0.cgFloat()}.bind {[weak self] rs in
             self?.config.subGroupSpacingEqual = rs
             self?.updateAction.accept(nil)
-        }.disposed(by: zt_disposeBag)
+        }.disposed(by: ty_disposeBag)
     }
     
     func addGroup() {
@@ -186,8 +186,8 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
         self.groupCountBgItem._view.subviews.forEach{$0.removeFromSuperview()}
         self.groupSpacingBgItem._view.subviews.forEach{$0.removeFromSuperview()}
         
-        groupCountBgItem._subItem.append(LyItem(view: tf1))
-        groupSpacingBgItem._subItem.append(LyItem(view: tf2))
+        groupCountBgItem._subItem.append(LYItem(view: tf1))
+        groupSpacingBgItem._subItem.append(LYItem(view: tf2))
         
         groupCountBgItem.addSubView()
         groupSpacingBgItem.addSubView()
@@ -195,8 +195,8 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
         groupCountBgItem.layout()
         groupSpacingBgItem.layout()
         
-        tf1.rx.controlEvent(.editingDidEnd).bind{[weak self] _ in self?.updateConfig()}.disposed(by: zt_disposeBag)
-        tf2.rx.controlEvent(.editingDidEnd).bind{[weak self] _ in self?.updateConfig()}.disposed(by: zt_disposeBag)
+        tf1.rx.controlEvent(.editingDidEnd).bind{[weak self] _ in self?.updateConfig()}.disposed(by: ty_disposeBag)
+        tf2.rx.controlEvent(.editingDidEnd).bind{[weak self] _ in self?.updateConfig()}.disposed(by: ty_disposeBag)
         
         self.updateConfig()
         self.settingTF()
@@ -239,7 +239,7 @@ class ZTLayoutSetGroupView: ZTLayoutSetConfigBaseView {
         }
         
         self.config.subGroupSpacing = spacingArr
-        self.config.subLineMaxCount = countArr
+        self.config.subGroupItemCount = countArr
         
         self.updateAction.accept(nil)
     }
@@ -249,29 +249,29 @@ class ZTLayoutSetAliView: ZTLayoutSetConfigBaseView {
     lazy var titleLabel = Label("子视图对齐方式")
     lazy var view = View()
     lazy var switchArr = [UIButton]()
-    lazy var ItemArr = [LyItem]()
+    lazy var ItemArr = [LYItem]()
     
     override func layoutUI() {
         
         let titleArr = ["h_top","h_center","h_bottom","v_left","v_center","v_right"]//,"h_last_top","h_last_center","h_last_bottom","v_last_left","v_last_center","v_last_right"]
         for title in titleArr {
             let bt = Switch(title)
-            let item = LyItem(view: bt)
+            let item = LYItem(view: bt)
             switchArr.append(bt)
             ItemArr.append(item)
         }
-        let config01 = LyItemConfig()
+        let config01 = LYItemConfig()
         config01.subAlignment = .v_left
         config01.subSpacing = 5
         
-        let config02 = LyItemConfig()
+        let config02 = LYItemConfig()
         config02.subAlignment = .h_bottom
         config02.subSpacing = 5
-        config02.subLineMaxCount = [3,3]
+        config02.subGroupItemCount = [3,3]
         config02.subGroupSpacingEqual = 2
         
-        LyItem(view: self, superView: self.zt_superview, config: config01) {[weak self] ly in
-            ly._subItem.append(LyItem(view: self!.titleLabel))
+        LYItem(view: self, superView: self.zt_superview, config: config01) {[weak self] ly in
+            ly._subItem.append(LYItem(view: self!.titleLabel))
             ly._subItem.append(LYBorderItem(view: UIView(), config: config02) { ly in
                 ly._subItem = self!.ItemArr
             })
@@ -287,7 +287,7 @@ class ZTLayoutSetAliView: ZTLayoutSetConfigBaseView {
                         self?.setConfig(v.titleLabel?.text)
                     }
                 }
-            }.disposed(by: self.zt_disposeBag)
+            }.disposed(by: self.ty_disposeBag)
         }
     }
     
@@ -321,10 +321,10 @@ class ZTLayoutDemoViewController01: UIViewController {
         return contentView
     }()
     
-    lazy var config = LyItemConfig()
+    lazy var config = LYItemConfig()
     lazy var aliView = ZTLayoutSetAliView(superview: self.view, config: config)
     lazy var grpView = ZTLayoutSetGroupView(superview: self.view, config: config)
-    lazy var showItem: LyItem = {
+    lazy var showItem: LYItem = {
         let v = UIView()
         v.layer.borderColor = UIColor.black.cgColor
         v.layer.borderWidth = 1
@@ -338,13 +338,13 @@ class ZTLayoutDemoViewController01: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
         
-        let config01 = LyItemConfig()
+        let config01 = LYItemConfig()
         config01.subAlignment = .v_left
         config01.subSpacing = 5
         
-        LyItem(view: contentView, superView: self.view, config: config01) {[weak self] ly in
-            ly._subItem.append(LyItem(view: self!.aliView))
-            ly._subItem.append(LyItem(view: self!.grpView))
+        LYItem(view: contentView, superView: self.view, config: config01) {[weak self] ly in
+            ly._subItem.append(LYItem(view: self!.aliView))
+            ly._subItem.append(LYItem(view: self!.grpView))
             ly._subItem.append(self!.showItem)
         }.layout()
         
@@ -364,16 +364,16 @@ class ZTLayoutDemoViewController01: UIViewController {
     
     var updateBinder: Binder<Void?> {
         return Binder(self) { ws, _ in
-            guard let subLineMaxCount = ws.config.subLineMaxCount, subLineMaxCount.count > 0 else {return}
+            guard let subGroupItemCount = ws.config.subGroupItemCount, subGroupItemCount.count > 0 else {return}
             ws.showItem._subItem.forEach{$0._view.removeFromSuperview()}
             ws.showItem._subItem.removeAll()
-            for section in subLineMaxCount {
+            for section in subGroupItemCount {
                 for _ in 0..<section {
                     let view = UIView()
                     view.backgroundColor = .red
                     view.zt_width = CGFloat(arc4random_uniform(50)+20)
                     view.zt_height = CGFloat(arc4random_uniform(30)+20)
-                    ws.showItem._subItem.append(LyItem(view: view))
+                    ws.showItem._subItem.append(LYItem(view: view))
                 }
             }
             ws.showItem.reload()

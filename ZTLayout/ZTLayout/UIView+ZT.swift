@@ -22,7 +22,7 @@ public extension UIView {
         
         static var zt_size_didset = "zt_size_didset"
         
-        static var zt_disposeBag = "zt_disposeBag"
+        static var ty_disposeBag = "ty_disposeBag"
     }
     
     var zt_width: CGFloat {
@@ -91,16 +91,16 @@ public extension UIView {
         }
     }
     
-    var zt_disposeBag: DisposeBag {
+    var ty_disposeBag: DisposeBag {
         get {
-            if let disposeBag = objc_getAssociatedObject(self, &AssociatedKeys.zt_disposeBag) as? DisposeBag {
+            if let disposeBag = objc_getAssociatedObject(self, &AssociatedKeys.ty_disposeBag) as? DisposeBag {
                 return disposeBag
             }
-            self.zt_disposeBag = DisposeBag()
-            return self.zt_disposeBag
+            self.ty_disposeBag = DisposeBag()
+            return self.ty_disposeBag
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.zt_disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.ty_disposeBag, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

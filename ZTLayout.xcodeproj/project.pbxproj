@@ -71,14 +71,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		BC0C6FF6269D838B00B8BC40 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				BC0C6FF7269D83A400B8BC40 /* ZTItem.swift */,
-			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
 		BC0C6FF9269E87F300B8BC40 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				BC0C6FF9269E87F300B8BC40 /* Demo */,
-				BC0C6FF6269D838B00B8BC40 /* Layout */,
 				BC411C8E269047F7006DD213 /* ZTLayout */,
 				BC411C78269047DE006DD213 /* AppDelegate.swift */,
 				BC411C7A269047DE006DD213 /* SceneDelegate.swift */,
@@ -126,6 +117,7 @@
 		BC411C8E269047F7006DD213 /* ZTLayout */ = {
 			isa = PBXGroup;
 			children = (
+				BC0C6FF7269D83A400B8BC40 /* ZTItem.swift */,
 				BC411C8C269047F1006DD213 /* ZTLayout.swift */,
 				BC411C8F2690482B006DD213 /* ZTOperators.swift */,
 				BC411C9326905291006DD213 /* UIView+ZT.swift */,
